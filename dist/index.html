@@ -1,0 +1,436 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>scRNASeq of ovarian cancer associated macrophages</title>
+
+    
+    
+    
+    <style>
+      /* set r-heading-text-transform to none
+	   */
+      .container {
+        display: flex;
+      }
+      .col {
+        flex: 1;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index.a3c6083b.js"></script>
+    <link rel="stylesheet" href="./assets/index.38fe5b99.css">
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <div
+            style="
+              background-image: url("./assets/title_background.960b0318.webp");
+              height: 698px;
+              width: 100%;
+              position: absolute;
+            "
+          ></div>
+          <h2 style="margin-top: 20%">
+            scRNAseq of ovarian cancer tumor asociated macrophages
+          </h2>
+          <small style="position: absolute; left: 5%; bottom: -65%"
+            >Author: Florian Finkernagel, 2024-09-06</small
+          >
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <div class="container">
+            <div class="col">
+              <h3>Ovarian cancer (OC) as a public health problem</h3>
+              <ul style="font-size: 0.7em">
+                <li>65,000 cases / anno (E.U.)</li>
+                <li>42,000 deaths / anno (E.U.)</li>
+                <li>
+                  Survival rates post diagnosis:
+                  <ul>
+                    <li>2 years = 65%</li>
+                    <li>5 years = 44%</li>
+                    <li>10 years = 36%</li>
+                  </ul>
+                </li>
+                <li>
+                  Risk factors:
+                  <ul>
+                    <li>genetics</li>
+                    <li>age</li>
+                    <li>hormone replacement therapy</li>
+                    <li>obesity</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <table style="font-size: 0.75em">
+                <tr>
+                  <th>Cause of death</th>
+                  <th>Rate</th>
+                </tr>
+                <tr>
+                  <td>All causes</td>
+                  <td>818</td>
+                </tr>
+                <tr>
+                  <td>All cancer</td>
+                  <td>200</td>
+                </tr>
+                <tr>
+                  <td>Ischaemic heart disease</td>
+                  <td>94</td>
+                </tr>
+                <tr>
+                  <td>Breast cancer</td>
+                  <td>33</td>
+                </tr>
+                <tr>
+                  <td>Lung cancer</td>
+                  <td>31</td>
+                </tr>
+                <tr>
+                  <td>Colon cancer</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td>Diabetis</td>
+                  <td>19</td>
+                </tr>
+                <tr>
+                  <td>Pancreatic cancer</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td><b>Ovarian cancer</b></td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>Uterine cancer</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>Cervix cancer</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>Transport accidents</td>
+                  <td>3</td>
+                </tr>
+              </table>
+              <p style="font-size: 12pt; margin-top: 0em">
+                Source: Eurostat, standardized death rate, 2014, females only
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Ovarian carcinoma biology</h3>
+          <div class="container">
+            <div class="col">
+              <ul style="font-size: 0.75em">
+                <li>
+                  4 subgrops of epithelial OC
+                  <ul>
+                    <li>Serous</li>
+                    <li>Mucinous</li>
+                    <li>Endometrioid</li>
+                    <li>Clear cell</li>
+                  </ul>
+                </li>
+                <li>High grade serous OC (HGSOC) - most common</li>
+                <li>HGSOC sensitive to platin based chemotherapy</li>
+                <li>p53 mutated (>95%)</li>
+                <li>Copy number driven</li>
+                <li>serous tubal intraepithelial carcinoma</li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="./assets/biology.ea2bc9c4.webp" />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>Two microenvironments</h3>
+          <img src="./assets/two microenvironments.0fc48d94.webp" />
+        </section>
+        <section>
+          <h3>Question and experimental setup</h3>
+          <p>
+            "Mixed" macrophage polarization - artifact of bulk RNAseq, or real?
+          </p>
+          <p>
+            3 Patients, ascites and omentum TAMs
+            <img
+              src="./assets/tam.1519c7d3.png"
+              style="height: 1em; vertical-align: middle"
+            />
+          </p>
+          <p>ParseBIo WT mini kit (10k cells, 1-12 samples)</p>
+        </section>
+        <section>
+          <h3>Split-pipe pipeline</h3>
+          <ul>
+            <li>Must be requested</li>
+            <li>Problematic license</li>
+            <li>Straightforward (if unsophisticated Python)</li>
+            <li>Based on STAR + pre & postprocessing</li>
+            <li>Buggy 'argument parsing'</li>
+            <li>Slow</li>
+          </ul>
+        </section>
+        <section>
+          <h3>STARsolo pipeline</h3>
+          <ul>
+            <li>Open source</li>
+            <li>Almost 'one stop solution'</li>
+          </ul>
+          <div class="r-stack">
+            <img src="./assets/runtimes.9a810cff.png" class="" />
+            <img src="./assets/starsolo_vs_splitpipe.3caa78e8.png" class="fragment" />
+          </div>
+        </section>
+        <section>
+          <h3>The R/T reverse transcription speciality</h3>
+          Two reverse transcriptions per cell.
+          <img src="./assets/umap - R and T.15f0ec0e.png" />
+        </section>
+
+        <section>
+          <h3>The R/T reverse transcription speciality</h3>
+          R projected into T.
+          <img src="./assets/UMAP R projected into T.8358e189.png" />
+        </section>
+        <section>
+          <h3>Reads per cell</h3>
+          <div class="container">
+            <div class="col">
+              <ul>
+                <li>2.221.184 barcodes observed</li>
+                <li>11.050 with 1024+ reads</li>
+                <li>Gene filter: 30 cells / 100 reads</li>
+                <li>Cell Filter: min. 100 reads. Max 5x median (50k) reads</li>
+                <li>11.031 cells</li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="./assets/reads_per_cell.be972cac.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Mitochondrial content</h3>
+          <img
+            src="./assets/umap - pct_counts_mt.862c923d.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
+        <section>
+          <h3>Read depth per cell</h3>
+          <div class="container">
+            <div class="col">
+              <img
+                src="./assets/umap - counts broken.021c2deb.png"
+                style="margin-top: 0; margin-bottom: 0"
+              />
+              <span style="font-size: 0.7em"> Overplotting </span>
+            </div>
+            <div class="col">
+              <img
+                src="./assets/umap - counts.d7a223db.png"
+                style="margin-top: 0; margin-bottom: 0"
+              /><span style="font-size: 0.7em"> Anti-overplotting </span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>UMAP Leiden clustering</h3>
+          <img
+            src="./assets/umap - by leiden.c4ab00c9.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
+        <section>
+          <section>
+            <h3>Automated Cell Type annotation (SCSA)</h3>
+            <img
+              src="./assets/umap - SCSA.6a9d2fe5.png"
+              style="height: 500px; margin-top: 0"
+            />
+            <br />
+            Obviously wrong.
+          </section>
+
+          <section>
+            <div class="container">
+              <div class="col">
+                <h3>Leiden clustering (repeat)</h3>
+                <img
+                  src="./assets/umap - by leiden.c4ab00c9.png"
+                  style="height: 500px; margin-top: 0"
+                />
+              </div>
+              <div class="col">
+                <h3>Cluster markers</h3>
+                <img
+                  src="./assets/cluster_markers.64028f85.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Human protein Atlas</h3>
+            <img
+              src="./assets/human protein atlas.313c39b2.png"
+              style="height: 500px; margin-top: 0"
+            />
+            <br />
+          </section>
+
+          <section>
+            <h3>Manual Cell Type annotation</h3>
+            <img
+              src="./assets/umap - cell type.7aa0d4e1.png"
+              style="height: 620px; margin-top: 0"
+            />
+          </section>
+          <section>
+            <h3>T Cell confirmation</h3>
+            <div class="r-stack">
+              <div>
+                <img
+                  src="./assets/umap - CD3E.20614139.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+
+              <div>
+                <img
+                  class="fragment"
+                  src="./assets/umap - CD3E_2.48a1fc13.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <div class="container">
+            <div class="col">
+              <h3 style="text-align: left; margin-left: 1em">
+                UMAP by Condition
+              </h3>
+              <img
+                src="./assets/umap - by condition.095a428b.png"
+                style="height: 600px; margin-top: 0"
+              />
+            </div>
+            <div class="col">
+              <h3 style="text-align: left; margin-left: 1em">UMAP by donor</h3>
+              <img
+                src="./assets/umap - by patient.1624669d.png"
+                style="height: 600px; margin-top: 0"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>UMAP cell type & donor</h3>
+          <img
+            src="./assets/umap - overview.7b514ff0.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
+
+        <section>
+          <img
+            src="./assets/asc193 highlight.1726ff7f.png"
+            style="
+              position: absolute;
+              top: -100px;
+              left: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+          <h3>Mph_Asc_193</h3>
+          <div class="container" style="background: white">
+            <div class="col">
+              <h4 style="padding-bottom: 0; margin-bottom: 0">M1 markers</h4>
+              <img
+                src="./assets/M1 - OC_193 - ascTAM.93f4a86a.png"
+                style="margin-top: 0"
+              />
+            </div>
+            <div class="col">
+              <h4 style="padding-bottom: 0; margin-bottom: 0">M2 markers</h4>
+              <img
+                src="./assets/M2 - OC_193 - ascTAM.46f5ba85.png"
+                style="margin-top: 0"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <img
+            src="./assets/asc193 highlight.1726ff7f.png"
+            style="
+              position: absolute;
+              top: -100px;
+              left: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+          <img
+            src="./assets/asc193 m1 m2 tiny.8f013f24.png"
+            style="
+              position: absolute;
+              top: -100px;
+              right: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+
+
+          <img src="./assets/ascTAM OC193 M1 vs M2 scatter.7e4adf53.png" />
+        </section>
+		<section>
+			<h3>Summary</h3>
+			<ul>
+				<li>ParsebBio Evercode with fixed cells works</li>
+				<li>Distinguishing Cell types is scRNAseq easy mode</li>
+				<li>There are no M1 & M2 double (very) positive cells
+					in asc OC193
+				</li>
+			</ul>
+
+
+		</section>
+        <section
+          data-markdown="md/index.md"
+          data-separator="^---"
+          data-separator-vertical="^--"
+          data-separator-notes="^Note:"
+        ></section>
+
+        <section></section>
+      </div>
+    </div>
+    
+  </body>
+</html>
