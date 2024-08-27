@@ -14,4 +14,5 @@ Reveal.initialize({
     transition: "none",
     history: "true",
     plugins: [Markdown, Highlight, Notes],
+	slideNumber: true
 });

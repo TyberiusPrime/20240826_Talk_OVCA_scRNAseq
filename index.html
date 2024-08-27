@@ -7,20 +7,19 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/solarized.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="/node_modules/highlight.js/styles/stackoverflow-light.css">
 	<style>
 	/* set r-heading-text-transform to none
 	   */
-:root {
-	--r-heading-text-transform: none;
-}
 .container{
     display: flex;
 }
 .col{
     flex: 1;
 }
+
+
 </style>
 
 </head>
@@ -28,8 +27,20 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            <section>
-                <h2>scRNAseq of ovarian cancer tumor asociated macrophoges</h2>
+			<section>
+				<div style="
+					background-image: url('title_background.webp');
+					height:698px;
+					width:100%;
+					position:absolute;
+					"
+					>
+				</div>
+                 <h2 style="margin-top:20%">scRNAseq of ovarian cancer tumor asociated macrophages</h2>
+				 <small 
+					 style="position:absolute; left: 5%; bottom:-65%"
+
+					 >Author: Florian Finkernagel, 2024-09-06</small>
                 <aside class="notes"></aside>
             </section>
 			<section>
@@ -39,8 +50,8 @@
 <div class="col">
 				<h3>Ovarian cancer (OC) as a public health problem</h3>
 					<ul style="font-size:.7em">
-						<li>65,000 cases each year in the E.U.</li>
-							<li>42,000 deaths each year in the E.U</li>
+						<li>65,000 cases / anno (E.U.)</li>
+							<li>42,000 deaths / anno (E.U.)</li>
 								<li>Survival rates post diagnosis:
 									<ul>
 									<li>2 years = 65%</li>
@@ -59,7 +70,7 @@
 </div>
 <div class="col">
 
-<table style="font-size:.8em">
+<table style="font-size:.75em">
 	<tr><th> Cause of death</th><th>Rate</th></tr>
 <tr><td>All causes</td><td>818</td></tr>
 <tr><td>All cancer</td><td>200</td></tr>
@@ -83,8 +94,8 @@
 
 			</section>
 			<section>
-				<h3>Ovarian carcinoma biology</h3>
-				<img src="images/biology.webp" />
+				<!-- <h3>Ovarian carcinoma biology</h3> -->
+				<img src="images/biology.webp" style="width:100%; height:100%;"/>
 			</section>
 
 			<section>
