@@ -73,9 +73,9 @@ html * {
     background-repeat: no-repeat;
 }
 
-.reveal .slides {
+/* .reveal .slides {
     overflow: hidden;
-}
+} */
 
 
 .reveal .slides section,

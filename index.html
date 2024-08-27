@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Title</title>
+    <title>scRNASeq of ovarian cancer associated macrophages</title>
 
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="style.css" />
@@ -134,9 +134,6 @@
           </div>
         </section>
         <section>
-          <!-- <h3>Ovarian carcinoma biology</h3> -->
-          <!-- <img src="images/biology.webp" style="width: 100%; height: 100%" /> -->
-
           <h3>Ovarian carcinoma biology</h3>
           <div class="container">
             <div class="col">
@@ -168,25 +165,194 @@
           <img src="images/two microenvironments.webp" />
         </section>
         <section>
-          - scRNAseq plans - 3 patients, 2 'compartments' of TAMs - parsebio WT
-          mini kit, 10k cells, 1-12 samples
+          <h3>Question and experimental setup</h3>
+          <p>
+            "Mixed" macrophage polarization - artifact of bulk RNAseq, or real?
+          </p>
+          <p>
+            3 Patients, ascites and omentum TAMs
+            <img
+              src="images/tam.png"
+              style="height: 1em; vertical-align: middle"
+            />
+          </p>
+          <p>ParseBIo WT mini kit (10k cells, 1-12 samples)</p>
         </section>
         <section>
-          The ParseBio 'Split-Pipe' pipeline. The good - python with source code
-          - reasonably straight forward The bad - license from 1996. Also crazy.
-          (You may not...modify. If you make modifications, you must provide
-          them to parsebio) - bad argument parsing / input fileformats strict -
-          so slow.
+          <h3>Split-pipe pipeline</h3>
+          <ul>
+            <li>Must be requested</li>
+            <li>Unusable license</li>
+            <li>Straightforward if unsophisticated python</li>
+            <li>Based on STAR + pre & postprocessing</li>
+            <li>Buggy 'argument parsing'</li>
+            <li>Slow</li>
+          </ul>
         </section>
-        <section>StarSOLO pipeline</section>
-        <section>The R/T reverse transcription 'hickup'</section>
-        <section>Starsolo and split-pipe agreement</section>
-        <section>Reads per cell,</section>
-        <section>Mitochondrial content</section>
-        <section>umap overview</section>
-        <section>umap counts</section>
-        <section>Leiden clusters</section>
-        <section>Cell type annotations</section>
+        <section>
+          <h3>STARsolo pipeline</h3>
+          <ul>
+            <li>Open source</li>
+            <li>Almost 'one stop solution'</li>
+          </ul>
+          <div class="r-stack">
+            <img src="images/runtimes.png" class="" />
+            <img src="images/starsolo_vs_splitpipe.png" class="fragment" />
+          </div>
+        </section>
+        <section>
+          <h3>The R/T reverse transcription speciality</h3>
+          Two reverse transcriptions per cell.
+          <img src="images/umap - R and T.png" />
+        </section>
+
+        <section>
+          <h3>The R/T reverse transcription speciality</h3>
+          R projected into T.
+          <img src="images/UMAP R projected into T.png" />
+        </section>
+        <section>
+          <h3>Reads per cell</h3>
+          <div class="container">
+            <div class="col">
+              <ul>
+                <li>2.221.184 barcodes observed</li>
+                <li>11.050 with 1024+ reads</li>
+                <li>Gene filter: 30 cells / 100 reads</li>
+                <li>Cell Filter: min. 100 reads. Max 5x median (50k) reads</li>
+                <li>11.031 cells</li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="images/reads_per_cell.png" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Mitochondrial content</h3>
+          <img
+            src="images/umap - pct_counts_mt.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
+        <section>
+          <h3>Read depth per cell</h3>
+          <div class="container">
+            <div class="col">
+              <img
+                src="images/umap - counts broken.png"
+                style="margin-top: 0; margin-bottom: 0"
+              />
+              <span style="font-size: 0.7em"> Overplotting </span>
+            </div>
+            <div class="col">
+              <img
+                src="images/umap - counts.png"
+                style="margin-top: 0; margin-bottom: 0"
+              /><span style="font-size: 0.7em"> Anti-overplotting </span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>UMAP Leiden clustering</h3>
+          <img
+            src="images/umap - by leiden.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
+        <section>
+          <section>
+            <h3>Automated Cell Type annotation (SCSA)</h3>
+            <img
+              src="images/umap - SCSA.png"
+              style="height: 500px; margin-top: 0"
+            />
+            <br />
+            Obviously wrong.
+          </section>
+
+          <section>
+            <div class="container">
+              <div class="col">
+                <h3>Leiden clustering (repeat)</h3>
+                <img
+                  src="images/umap - by leiden.png"
+                  style="height: 500px; margin-top: 0"
+                />
+              </div>
+              <div class="col">
+                <h3>Cluster markers</h3>
+                <img
+                  src="images/cluster_markers.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Human protein Atlas</h3>
+            <img
+              src="images/human protein atlas.png"
+              style="height: 500px; margin-top: 0"
+            />
+            <br />
+          </section>
+
+          <section>
+            <h3>Manual Cell Type annotation</h3>
+            <img
+              src="images/umap - cell type.png"
+              style="height: 620px; margin-top: 0"
+            />
+          </section>
+          <section>
+            <h3>T Cell confirmation</h3>
+            <div class="r-stack">
+              <div>
+                <img
+                  src="images/umap - CD3E.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+
+              <div>
+                <img
+                  class="fragment"
+                  src="images/umap - CD3E_2.png"
+                  style="height: 620px; margin-top: 0"
+                />
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <div class="container">
+            <div class="col">
+              <h3 style="text-align:left;margin-left:1em;">UMAP by Condition</h3>
+              <img
+                src="images/umap - by condition.png"
+                style="height: 600px; margin-top: 0"
+              />
+            </div>
+            <div class="col">
+              <h3 style="text-align:left;margin-left:1em;">UMAP by donor</h3>
+              <img
+                src="images/umap - by patient.png"
+                style="height: 600px; margin-top: 0"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3>UMAP cell type & donor</h3>
+          <img
+            src="images/umap - overview.png"
+            style="height: 600px; margin-top: 0"
+          />
+        </section>
 
         <section>By condition</section>
         <section>The patient-dependency problem</section>
@@ -200,12 +366,7 @@
           data-separator-notes="^Note:"
         ></section>
 
-        <section>
-          Read Counts filtering. 2221184 barcodes observed, 11050 with > 1024
-          (2^10) reads. 10128 with > 4096 (2^12) reads. Filtered to Genes with
-          min .30 cells / 100 reads, and 1000 cell reads, and upper limit = 5
-          times the median (~50k reads) -> 11031 cells. Expected were ~10k.
-        </section>
+        <section></section>
       </div>
     </div>
     <script type="module" src="/js/index.js"></script>

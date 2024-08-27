@@ -11,7 +11,8 @@ Reveal.configure({
 });
 Reveal.initialize({
     hash: true,
-    transition: "none",
+	transition: 'slide', // none/fade/slide/convex/concave/zoom
+
     history: "true",
     plugins: [Markdown, Highlight, Notes],
 	slideNumber: true
