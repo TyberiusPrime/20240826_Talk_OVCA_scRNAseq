@@ -1,185 +1,213 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Title</title>
 
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/node_modules/highlight.js/styles/stackoverflow-light.css">
-	<style>
-	/* set r-heading-text-transform to none
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/highlight.js/styles/stackoverflow-light.css"
+    />
+    <style>
+      /* set r-heading-text-transform to none
 	   */
-.container{
-    display: flex;
-}
-.col{
-    flex: 1;
-}
+      .container {
+        display: flex;
+      }
+      .col {
+        flex: 1;
+      }
+    </style>
+  </head>
 
-
-</style>
-
-</head>
-
-<body>
+  <body>
     <div class="reveal">
-        <div class="slides">
-			<section>
-				<div style="
-					background-image: url('title_background.webp');
-					height:698px;
-					width:100%;
-					position:absolute;
-					"
-					>
-				</div>
-                 <h2 style="margin-top:20%">scRNAseq of ovarian cancer tumor asociated macrophages</h2>
-				 <small 
-					 style="position:absolute; left: 5%; bottom:-65%"
+      <div class="slides">
+        <section>
+          <div
+            style="
+              background-image: url(&quot;title_background.webp&quot;);
+              height: 698px;
+              width: 100%;
+              position: absolute;
+            "
+          ></div>
+          <h2 style="margin-top: 20%">
+            scRNAseq of ovarian cancer tumor asociated macrophages
+          </h2>
+          <small style="position: absolute; left: 5%; bottom: -65%"
+            >Author: Florian Finkernagel, 2024-09-06</small
+          >
+          <aside class="notes"></aside>
+        </section>
+        <section>
+          <div class="container">
+            <div class="col">
+              <h3>Ovarian cancer (OC) as a public health problem</h3>
+              <ul style="font-size: 0.7em">
+                <li>65,000 cases / anno (E.U.)</li>
+                <li>42,000 deaths / anno (E.U.)</li>
+                <li>
+                  Survival rates post diagnosis:
+                  <ul>
+                    <li>2 years = 65%</li>
+                    <li>5 years = 44%</li>
+                    <li>10 years = 36%</li>
+                  </ul>
+                </li>
+                <li>
+                  Risk factors:
+                  <ul>
+                    <li>genetics</li>
+                    <li>age</li>
+                    <li>hormone replacement therapy</li>
+                    <li>obesity</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col">
+              <table style="font-size: 0.75em">
+                <tr>
+                  <th>Cause of death</th>
+                  <th>Rate</th>
+                </tr>
+                <tr>
+                  <td>All causes</td>
+                  <td>818</td>
+                </tr>
+                <tr>
+                  <td>All cancer</td>
+                  <td>200</td>
+                </tr>
+                <tr>
+                  <td>Ischaemic heart disease</td>
+                  <td>94</td>
+                </tr>
+                <tr>
+                  <td>Breast cancer</td>
+                  <td>33</td>
+                </tr>
+                <tr>
+                  <td>Lung cancer</td>
+                  <td>31</td>
+                </tr>
+                <tr>
+                  <td>Colon cancer</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td>Diabetis</td>
+                  <td>19</td>
+                </tr>
+                <tr>
+                  <td>Pancreatic cancer</td>
+                  <td>14</td>
+                </tr>
+                <tr>
+                  <td><b>Ovarian cancer</b></td>
+                  <td>11</td>
+                </tr>
+                <tr>
+                  <td>Uterine cancer</td>
+                  <td>7</td>
+                </tr>
+                <tr>
+                  <td>Cervix cancer</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>Transport accidents</td>
+                  <td>3</td>
+                </tr>
+              </table>
+              <p style="font-size: 12pt; margin-top: 0em">
+                Source: Eurostat, standardized death rate, 2014, females only
+              </p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <!-- <h3>Ovarian carcinoma biology</h3> -->
+          <!-- <img src="images/biology.webp" style="width: 100%; height: 100%" /> -->
 
-					 >Author: Florian Finkernagel, 2024-09-06</small>
-                <aside class="notes"></aside>
-            </section>
-			<section>
-				
-<div class="container">
+          <h3>Ovarian carcinoma biology</h3>
+          <div class="container">
+            <div class="col">
+              <ul style="font-size: 0.75em">
+                <li>
+                  4 subgrops of epithelial OC
+                  <ul>
+                    <li>Serous</li>
+                    <li>Mucinous</li>
+                    <li>Endometrioid</li>
+                    <li>Clear cell</li>
+                  </ul>
+                </li>
+                <li>High grade serous OC (HGSOC) - most common</li>
+                <li>HGSOC sensitive to platin based chemotherapy</li>
+                <li>p53 mutated (>95%)</li>
+                <li>Copy number driven</li>
+                <li>serous tubal intraepithelial carcinoma</li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="images/biology.webp" />
+            </div>
+          </div>
+        </section>
 
-<div class="col">
-				<h3>Ovarian cancer (OC) as a public health problem</h3>
-					<ul style="font-size:.7em">
-						<li>65,000 cases / anno (E.U.)</li>
-							<li>42,000 deaths / anno (E.U.)</li>
-								<li>Survival rates post diagnosis:
-									<ul>
-									<li>2 years = 65%</li>
-									<li>5 years = 44%</li>
-									<li>10 years = 36%</li>
-									</ul></li>
-					<li>Risk factors: 
-						<ul>
-						<li>genetics</li>
-							<li>age</li>
-								<li>hormone replacement therapy</li>
-									<li>obesity</li>
-								</ul>
-					</li>
-					</ul>
-</div>
-<div class="col">
+        <section>
+          <h3>Two microenvironments</h3>
+          <img src="images/two microenvironments.webp" />
+        </section>
+        <section>
+          - scRNAseq plans - 3 patients, 2 'compartments' of TAMs - parsebio WT
+          mini kit, 10k cells, 1-12 samples
+        </section>
+        <section>
+          The ParseBio 'Split-Pipe' pipeline. The good - python with source code
+          - reasonably straight forward The bad - license from 1996. Also crazy.
+          (You may not...modify. If you make modifications, you must provide
+          them to parsebio) - bad argument parsing / input fileformats strict -
+          so slow.
+        </section>
+        <section>StarSOLO pipeline</section>
+        <section>The R/T reverse transcription 'hickup'</section>
+        <section>Starsolo and split-pipe agreement</section>
+        <section>Reads per cell,</section>
+        <section>Mitochondrial content</section>
+        <section>umap overview</section>
+        <section>umap counts</section>
+        <section>Leiden clusters</section>
+        <section>Cell type annotations</section>
 
-<table style="font-size:.75em">
-	<tr><th> Cause of death</th><th>Rate</th></tr>
-<tr><td>All causes</td><td>818</td></tr>
-<tr><td>All cancer</td><td>200</td></tr>
-<tr><td>Ischaemic heart disease</td><td>94</td></tr>
-<tr><td>Breast cancer</td><td>33</td></tr>
-<tr><td>Lung cancer</td><td>31</td></tr>
-<tr><td>Colon cancer</td><td>23</td></tr>
-<tr><td>Diabetis</td><td>19</td></tr>
-<tr><td>Pancreatic cancer</td><td>14</td></tr>
-<tr><td><b>Ovarian cancer</b></td><td>11</td></tr>
-<tr><td>Uterine cancer</td><td>7</td></tr>
-<tr><td>Cervix cancer</td><td>4</td></tr>
-<tr><td>Transport accidents</td><td>3</td></tr>
-</table>
+        <section>By condition</section>
+        <section>The patient-dependency problem</section>
+        <section>Intra-Patient M1/M2 variance</section>
+        <section></section>
+        <section></section>
+        <section
+          data-markdown="md/index.md"
+          data-separator="^---"
+          data-separator-vertical="^--"
+          data-separator-notes="^Note:"
+        ></section>
 
-</div>
-</div>
-
-
-
-
-			</section>
-			<section>
-				<!-- <h3>Ovarian carcinoma biology</h3> -->
-				<img src="images/biology.webp" style="width:100%; height:100%;"/>
-			</section>
-
-			<section>
-				<h3>Two microenvironments</h3>
-				<img src="images/two microenvironments.webp" />
-			</section>
-			<section>
-				- scRNAseq plans
-				- 3 patients, 2 'compartments' of TAMs
-				- parsebio WT mini kit, 10k cells, 1-12 samples
-			</section>
-			<section>
-				The ParseBio 'Split-Pipe' pipeline.
-				The good 
-				 - python with source code
-				 - reasonably straight forward
-				The bad 
-				 - license from 1996. Also crazy.
-				 (You may not...modify. If you make modifications, 
-				 you must provide them to parsebio)
-				 - bad argument parsing / input fileformats strict
-				 - so slow.
-			</section>
-			<section>
-				StarSOLO pipeline
-			</section>
-			<section>
-				The R/T reverse transcription 'hickup'
-			</section>
-			<section>
-				Starsolo and split-pipe agreement
-			</section>
-			<section>
-				Reads per cell,
-			</section>
-			<section>
-				Mitochondrial content
-			</section>
-			<section>
-				umap overview
-			</section>
-			<section>
-				umap counts
-			</section>
-			<section>
-				Leiden clusters
-			</section>
-			<section>
-				Cell type annotations
-			</section>
-
-			<section>
-				By condition
-			</section>
-			<section>
-				The patient-dependency problem
-			</section>
-			<section>
-				Intra-Patient M1/M2 variance
-			</section>
-			<section>
-			</section>
-			<section>
-			</section>
-            <section data-markdown="md/index.md" data-separator="^---" data-separator-vertical="^--"
-                data-separator-notes="^Note:"></section>
-
-
-			<section>
-				Read Counts filtering.
-				2221184 barcodes observed,
-				11050 with > 1024 (2^10) reads.
-				10128 with > 4096 (2^12) reads.
-				Filtered to Genes with min .30 cells / 100 reads,
-				and 1000 cell reads,
-				and upper limit = 5 times the median (~50k reads)
-				-> 11031 cells.
-
-				Expected were ~10k.
-
-			</section>
-        </div>
+        <section>
+          Read Counts filtering. 2221184 barcodes observed, 11050 with > 1024
+          (2^10) reads. 10128 with > 4096 (2^12) reads. Filtered to Genes with
+          min .30 cells / 100 reads, and 1000 cell reads, and upper limit = 5
+          times the median (~50k reads) -> 11031 cells. Expected were ~10k.
+        </section>
+      </div>
     </div>
     <script type="module" src="/js/index.js"></script>
-</body>
-
+  </body>
 </html>
