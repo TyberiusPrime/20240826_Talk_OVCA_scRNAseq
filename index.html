@@ -7,19 +7,165 @@
     <title>Title</title>
 
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css">
-    <link rel="stylesheet" href="/node_modules/highlight.js/styles/stackoverflow-dark.css">
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/solarized.css">
+    <link rel="stylesheet" href="/node_modules/highlight.js/styles/stackoverflow-light.css">
+	<style>
+	/* set r-heading-text-transform to none
+	   */
+:root {
+	--r-heading-text-transform: none;
+}
+.container{
+    display: flex;
+}
+.col{
+    flex: 1;
+}
+</style>
+
 </head>
 
 <body>
     <div class="reveal">
         <div class="slides">
             <section>
-                <h2>Title</h2>
+                <h2>scRNAseq of ovarian cancer tumor asociated macrophoges</h2>
                 <aside class="notes"></aside>
             </section>
+			<section>
+				
+<div class="container">
+
+<div class="col">
+				<h3>Ovarian cancer (OC) as a public health problem</h3>
+					<ul style="font-size:.7em">
+						<li>65,000 cases each year in the E.U.</li>
+							<li>42,000 deaths each year in the E.U</li>
+								<li>Survival rates post diagnosis:
+									<ul>
+									<li>2 years = 65%</li>
+									<li>5 years = 44%</li>
+									<li>10 years = 36%</li>
+									</ul></li>
+					<li>Risk factors: 
+						<ul>
+						<li>genetics</li>
+							<li>age</li>
+								<li>hormone replacement therapy</li>
+									<li>obesity</li>
+								</ul>
+					</li>
+					</ul>
+</div>
+<div class="col">
+
+<table style="font-size:.8em">
+	<tr><th> Cause of death</th><th>Rate</th></tr>
+<tr><td>All causes</td><td>818</td></tr>
+<tr><td>All cancer</td><td>200</td></tr>
+<tr><td>Ischaemic heart disease</td><td>94</td></tr>
+<tr><td>Breast cancer</td><td>33</td></tr>
+<tr><td>Lung cancer</td><td>31</td></tr>
+<tr><td>Colon cancer</td><td>23</td></tr>
+<tr><td>Diabetis</td><td>19</td></tr>
+<tr><td>Pancreatic cancer</td><td>14</td></tr>
+<tr><td><b>Ovarian cancer</b></td><td>11</td></tr>
+<tr><td>Uterine cancer</td><td>7</td></tr>
+<tr><td>Cervix cancer</td><td>4</td></tr>
+<tr><td>Transport accidents</td><td>3</td></tr>
+</table>
+
+</div>
+</div>
+
+
+
+
+			</section>
+			<section>
+				<h3>Ovarian carcinoma biology</h3>
+				<img src="images/biology.webp" />
+			</section>
+
+			<section>
+				<h3>Two microenvironments</h3>
+				<img src="images/two microenvironments.webp" />
+			</section>
+			<section>
+				- scRNAseq plans
+				- 3 patients, 2 'compartments' of TAMs
+				- parsebio WT mini kit, 10k cells, 1-12 samples
+			</section>
+			<section>
+				The ParseBio 'Split-Pipe' pipeline.
+				The good 
+				 - python with source code
+				 - reasonably straight forward
+				The bad 
+				 - license from 1996. Also crazy.
+				 (You may not...modify. If you make modifications, 
+				 you must provide them to parsebio)
+				 - bad argument parsing / input fileformats strict
+				 - so slow.
+			</section>
+			<section>
+				StarSOLO pipeline
+			</section>
+			<section>
+				The R/T reverse transcription 'hickup'
+			</section>
+			<section>
+				Starsolo and split-pipe agreement
+			</section>
+			<section>
+				Reads per cell,
+			</section>
+			<section>
+				Mitochondrial content
+			</section>
+			<section>
+				umap overview
+			</section>
+			<section>
+				umap counts
+			</section>
+			<section>
+				Leiden clusters
+			</section>
+			<section>
+				Cell type annotations
+			</section>
+
+			<section>
+				By condition
+			</section>
+			<section>
+				The patient-dependency problem
+			</section>
+			<section>
+				Intra-Patient M1/M2 variance
+			</section>
+			<section>
+			</section>
+			<section>
+			</section>
             <section data-markdown="md/index.md" data-separator="^---" data-separator-vertical="^--"
                 data-separator-notes="^Note:"></section>
+
+
+			<section>
+				Read Counts filtering.
+				2221184 barcodes observed,
+				11050 with > 1024 (2^10) reads.
+				10128 with > 4096 (2^12) reads.
+				Filtered to Genes with min .30 cells / 100 reads,
+				and 1000 cell reads,
+				and upper limit = 5 times the median (~50k reads)
+				-> 11031 cells.
+
+				Expected were ~10k.
+
+			</section>
         </div>
     </div>
     <script type="module" src="/js/index.js"></script>
