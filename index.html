@@ -182,8 +182,8 @@
           <h3>Split-pipe pipeline</h3>
           <ul>
             <li>Must be requested</li>
-            <li>Unusable license</li>
-            <li>Straightforward if unsophisticated python</li>
+            <li>Problematic license</li>
+            <li>Straightforward (if unsophisticated Python)</li>
             <li>Based on STAR + pre & postprocessing</li>
             <li>Buggy 'argument parsing'</li>
             <li>Slow</li>
@@ -330,14 +330,16 @@
         <section>
           <div class="container">
             <div class="col">
-              <h3 style="text-align:left;margin-left:1em;">UMAP by Condition</h3>
+              <h3 style="text-align: left; margin-left: 1em">
+                UMAP by Condition
+              </h3>
               <img
                 src="images/umap - by condition.png"
                 style="height: 600px; margin-top: 0"
               />
             </div>
             <div class="col">
-              <h3 style="text-align:left;margin-left:1em;">UMAP by donor</h3>
+              <h3 style="text-align: left; margin-left: 1em">UMAP by donor</h3>
               <img
                 src="images/umap - by patient.png"
                 style="height: 600px; margin-top: 0"
@@ -354,11 +356,72 @@
           />
         </section>
 
-        <section>By condition</section>
-        <section>The patient-dependency problem</section>
-        <section>Intra-Patient M1/M2 variance</section>
-        <section></section>
-        <section></section>
+        <section>
+          <img
+            src="images/asc193 highlight.png"
+            style="
+              position: absolute;
+              top: -100px;
+              left: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+          <h3>Mph_Asc_193</h3>
+          <div class="container" style="background: white">
+            <div class="col">
+              <h4 style="padding-bottom: 0; margin-bottom: 0">M1 markers</h4>
+              <img
+                src="images/separate/M1 - OC_193 - ascTAM.png"
+                style="margin-top: 0"
+              />
+            </div>
+            <div class="col">
+              <h4 style="padding-bottom: 0; margin-bottom: 0">M2 markers</h4>
+              <img
+                src="images/separate/M2 - OC_193 - ascTAM.png"
+                style="margin-top: 0"
+              />
+            </div>
+          </div>
+        </section>
+        <section>
+          <img
+            src="images/asc193 highlight.png"
+            style="
+              position: absolute;
+              top: -100px;
+              left: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+          <img
+            src="images/separate/asc193 m1 m2 tiny.png"
+            style="
+              position: absolute;
+              top: -100px;
+              right: 10px;
+              height: 170px;
+              z-index: -3;
+            "
+          />
+
+
+          <img src="images/ascTAM OC193 M1 vs M2 scatter.png" />
+        </section>
+		<section>
+			<h3>Summary</h3>
+			<ul>
+				<li>ParsebBio Evercode with fixed cells works</li>
+				<li>Distinguishing Cell types is scRNAseq easy mode</li>
+				<li>There are no M1 & M2 double (very) positive cells
+					in asc OC193
+				</li>
+			</ul>
+
+
+		</section>
         <section
           data-markdown="md/index.md"
           data-separator="^---"
