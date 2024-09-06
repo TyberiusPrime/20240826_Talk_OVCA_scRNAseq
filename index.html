@@ -46,6 +46,8 @@
           >
           <aside class="notes"></aside>
         </section>
+
+		<section>
         <section>
           <div class="container">
             <div class="col">
@@ -164,10 +166,11 @@
           <h3>Two microenvironments</h3>
           <img src="images/two microenvironments.webp" />
         </section>
+		</section>
         <section>
           <h3>Question and experimental setup</h3>
           <p>
-            "Mixed" macrophage polarization - artifact of bulk RNAseq, or real?
+		  "Mixed" macrophage polarization: <br /> <b>An artifact of bulk RNAseq, or real?</b>
           </p>
           <p>
             3 Patients, ascites and omentum TAMs
@@ -176,12 +179,13 @@
               style="height: 1em; vertical-align: middle"
             />
           </p>
-          <p>ParseBIo WT mini kit (10k cells, 1-12 samples)</p>
+          <p>ParseBio WT mini kit (10k cells, 1-12 samples)</p>
         </section>
+	<section>
         <section>
           <h3>Split-pipe pipeline</h3>
           <ul>
-            <li>Must be requested</li>
+            <li>Available upon request</li>
             <li>Problematic license</li>
             <li>Straightforward (if unsophisticated Python)</li>
             <li>Based on STAR + pre & postprocessing</li>
@@ -196,28 +200,30 @@
             <li>Almost 'one stop solution'</li>
           </ul>
           <div class="r-stack">
-            <img src="images/runtimes.png" class="" />
-            <img src="images/starsolo_vs_splitpipe.png" class="fragment" />
+            <img src="images/starsolo_vs_splitpipe.png" class="" />
+            <img src="images/runtimes.png" class="fragment" />
           </div>
         </section>
         <section>
-          <h3>The R/T reverse transcription speciality</h3>
+          <h3>The R/T reverse transcription Parsebio speciality</h3>
           Two reverse transcriptions per cell.
           <img src="images/umap - R and T.png" />
         </section>
 
         <section>
-          <h3>The R/T reverse transcription speciality</h3>
+          <h3>The R/T reverse transcription Parsebio speciality</h3>
           R projected into T.
           <img src="images/UMAP R projected into T.png" />
         </section>
+		</section>
+	<section>
         <section>
           <h3>Reads per cell</h3>
           <div class="container">
             <div class="col">
               <ul>
                 <li>2.221.184 barcodes observed</li>
-                <li>11.050 with 1024+ reads</li>
+				<li>->11.050 with 1024+ reads</li>
                 <li>Gene filter: 30 cells / 100 reads</li>
                 <li>Cell Filter: min. 100 reads. Max 5x median (50k) reads</li>
                 <li>11.031 cells</li>
@@ -261,6 +267,8 @@
             style="height: 600px; margin-top: 0"
           />
         </section>
+	</section>
+
         <section>
           <section>
             <h3>Automated Cell Type annotation (SCSA)</h3>
@@ -412,6 +420,7 @@
 
           <img src="images/ascTAM OC193 M1 vs M2 scatter.png" />
         </section>
+		<section>
         <section>
           <h3>Summary</h3>
           <ul>
@@ -429,6 +438,7 @@
 
 		  </small>
         </section>
+		</section>
       </div>
     </div>
     <script type="module" src="/js/index.js"></script>
